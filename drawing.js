@@ -37,25 +37,6 @@ function setup() {
         }
 
         function drawStalkBroken(stalk) {
-            stack.unshift(mat3.clone(stack[0]));
-            if (stalk === 1) {
-                stack.unshift(mat3.clone(stack[0]));
-                mat3.rotate(stack[0], stack[0], stalk1_th);
-                drawStalk();
-                stack.shift();
-            }
-            if (stalk === 2) {
-                stack.unshift(mat3.clone(stack[0]));
-                mat3.rotate(stack[0], stack[0], stalk2_th);
-                drawStalk();
-                stack.shift();
-            }
-            if (stalk === 3) {
-                stack.unshift(mat3.clone(stack[0]));
-                mat3.rotate(stack[0], stack[0], stalk3_th);
-                drawStalk();
-                stack.shift();
-            }
 
             context.beginPath();
             context.fillStyle = "#a0a653";
@@ -67,7 +48,7 @@ function setup() {
             context.closePath();
             context.fill();
             context.stroke();
-            stack.shift();
+
         }
 
         function drawStalk() {
@@ -82,7 +63,7 @@ function setup() {
             context.fill();
             context.stroke();
 
-            stack.unshift(mat3.clone(stack[0]));
+
             var cob1 = mat3.create();
             mat3.fromTranslation(cob1, [30, -170]);
             mat3.rotate(cob1, cob1, corn_a);
@@ -147,7 +128,7 @@ function setup() {
         }
 
         function corn(broken, stalk) {
-            //stack.unshift(mat3.clone(stack[0]));
+            stack.unshift(mat3.clone(stack[0]));
             if (broken) {
                 if (stalk === 1) {
                     drawStalkBroken(1);
@@ -161,7 +142,7 @@ function setup() {
             } else {
                 drawStalk();
             }
-            //stack.shift();
+            stack.shift();
         }
 
         function drawBigWheel() {
