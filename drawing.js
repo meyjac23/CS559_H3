@@ -31,13 +31,12 @@ function setup() {
             context.fill();
             context.beginPath();
             context.fillStyle = "#997950";
-            context.rect(0, 450, canvas.width, 250);
+            context.rect(0, 490, canvas.width, 250);
             context.closePath();
             context.fill();
         }
 
         function drawStalkBroken(stalk) {
-
             context.beginPath();
             context.fillStyle = "#a0a653";
             context.lineWidth = 1;
@@ -148,31 +147,31 @@ function setup() {
         function drawBigWheel() {
             context.beginPath();
             context.fillStyle = 'black';
-            context.arc(270, 0, 60, 0, 2 * Math.PI);
+            context.arc(0, 0, 60, 0, 2 * Math.PI);
             context.fill();
             context.stroke();
             context.closePath();
 
             context.fillStyle = "#5e5e5e";
             context.beginPath();
-            context.moveTo(270, 0);
-            context.arc(270, 0, 35, 3*Math.PI/2, 2 * Math.PI);
+            context.moveTo(0, 0);
+            context.arc(0, 0, 35, 3*Math.PI/2, 2 * Math.PI);
             context.closePath();
             context.fill();
             context.beginPath();
-            context.moveTo(270, 0);
-            context.arc(270, 0, 35, Math.PI/2, Math.PI);
+            context.moveTo(0, 0);
+            context.arc(0, 0, 35, Math.PI/2, Math.PI);
             context.closePath();
             context.fill();
             context.beginPath();
             context.fillStyle = "#c4c4c4";
-            context.moveTo(270, 0);
-            context.arc(270, 0, 35, 0, Math.PI/2);
+            context.moveTo(0, 0);
+            context.arc(0, 0, 35, 0, Math.PI/2);
             context.closePath();
             context.fill();
             context.beginPath();
-            context.moveTo(270, 0);
-            context.arc(270, 0, 35, Math.PI, 3*Math.PI/2);
+            context.moveTo(0, 0);
+            context.arc(0, 0, 35, Math.PI, 3*Math.PI/2);
             context.closePath();
             context.fill();
         }
@@ -180,31 +179,31 @@ function setup() {
         function drawLittleWheel() {
             context.beginPath();
             context.fillStyle = 'black';
-            context.arc(50, 0, 50, 0, 2 * Math.PI);
+            context.arc(0, 0, 50, 0, 2 * Math.PI);
             context.fill();
             context.stroke();
             context.closePath();
 
             context.beginPath();
             context.fillStyle = "#c4c4c4";
-            context.moveTo(50, 0);
-            context.arc(50, 0, 25, 0, Math.PI/2);
+            context.moveTo(0, 0);
+            context.arc(0, 0, 25, 0, Math.PI/2);
             context.closePath();
             context.fill();
             context.beginPath();
-            context.moveTo(50, 0);
-            context.arc(50, 0, 25, Math.PI, 3*Math.PI/2);
+            context.moveTo(0, 0);
+            context.arc(0, 0, 25, Math.PI, 3*Math.PI/2);
             context.closePath();
             context.fill();
             context.beginPath();
             context.fillStyle = "#5e5e5e";
-            context.moveTo(50, 0);
-            context.arc(50, 0, 25, 3*Math.PI/2, 2 * Math.PI);
+            context.moveTo(0, 0);
+            context.arc(0, 0, 25, 3*Math.PI/2, 2 * Math.PI);
             context.closePath();
             context.fill();
             context.beginPath();
-            context.moveTo(50, 0);
-            context.arc(50, 0, 25, Math.PI/2, Math.PI);
+            context.moveTo(0, 0);
+            context.arc(0, 0, 25, Math.PI/2, Math.PI);
             context.closePath();
             context.fill();
         }
@@ -269,6 +268,7 @@ function setup() {
             mat3.fromTranslation(wheel_spin, [50, 0]);
             mat3.rotate(wheel_spin, wheel_spin, phi);
             mat3.multiply(stack[0], stack[0], wheel_spin);
+            setCanvasTransform(stack[0]);
             drawLittleWheel();
             stack.shift();
 
@@ -277,6 +277,7 @@ function setup() {
             mat3.fromTranslation(wheel_spin, [270, 0]);
             mat3.rotate(wheel_spin, wheel_spin, phi);
             mat3.multiply(stack[0], stack[0], wheel_spin);
+            setCanvasTransform(stack[0]);
             drawBigWheel();
             stack.shift();
 
@@ -322,7 +323,7 @@ function setup() {
         // Changes
         x = x + 0.01;
         combine_pos = combine_pos + 1;
-        phi = phi + 0.09;
+        phi = phi + 0.04;
         corn_a = 0.2 * Math.sin(0.3 * x - 2) + 1;
         if (combine_pos > 300) {
             stalk1_th = stalk1_th + 0.001;
